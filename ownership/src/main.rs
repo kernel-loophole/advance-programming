@@ -3,10 +3,10 @@ fn main()
     // let s = vec!["udon".to_string(), "ramen".to_string(),
     // "soba".to_string()];
     // println!("{}",s)
-    // drop_out_string();
-    // no_drop_out_ex();
-    // moves_and_control();
-    // another_example_of_moves();
+    drop_out_string();
+    no_drop_out_ex();
+    moves_and_control();
+    another_example_of_moves();
     moving_example_of_int();
     }
 
@@ -67,6 +67,8 @@ fn another_example_of_moves()
         println!("{}",s)
     }
 }
+//integers in Rust 
+//
 fn moving_example_of_int()
 {
     let num1:i32=32;
