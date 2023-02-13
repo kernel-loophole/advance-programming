@@ -3,10 +3,11 @@ fn main()
     // let s = vec!["udon".to_string(), "ramen".to_string(),
     // "soba".to_string()];
     // println!("{}",s)
-    drop_out_string();
-    no_drop_out_ex();
-    moves_and_control();
-    another_example_of_moves();
+    // drop_out_string();
+    // no_drop_out_ex();
+    // moves_and_control();
+    // another_example_of_moves();
+    moving_example_of_int();
     }
 
 fn drop_out_string()
@@ -65,4 +66,11 @@ fn another_example_of_moves()
         s.push('1');
         println!("{}",s)
     }
+}
+fn moving_example_of_int()
+{
+    let num1:i32=32;
+    let num2=num1;
+    println!(" value of num1 {}\n",num1);
+    println!("value of num2 {}\n",num2);
 }
