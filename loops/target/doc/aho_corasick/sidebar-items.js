@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["AcAutomaton","Dense","FullAcAutomaton","Match","Matches","MatchesOverlapping","Sparse","StreamMatches","StreamMatchesOverlapping"],"trait":["Automaton","Transitions"],"type":["StateIdx"]};
