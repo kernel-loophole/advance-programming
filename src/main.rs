@@ -42,3 +42,7 @@ fn main() {
     print!("{}",push_str.len());
     print!("{}",push_str);
 }
+fn make_it()
+{
+    println!("test fn");
+}
