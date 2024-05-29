@@ -1,3 +1,0 @@
-(function() {var implementors = {
-"aho_corasick":[["impl&lt;S: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.74.1/core/convert/trait.AsRef.html\" title=\"trait core::convert::AsRef\">AsRef</a>&lt;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.74.1/std/primitive.u8.html\">u8</a>]&gt;&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.74.1/core/iter/traits/collect/trait.FromIterator.html\" title=\"trait core::iter::traits::collect::FromIterator\">FromIterator</a>&lt;S&gt; for <a class=\"struct\" href=\"aho_corasick/struct.AcAutomaton.html\" title=\"struct aho_corasick::AcAutomaton\">AcAutomaton</a>&lt;S&gt;"]]
-};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
