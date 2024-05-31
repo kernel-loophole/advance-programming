@@ -54,15 +54,19 @@ fn main() {
     // let version2=String::from("1.30");
     // let ver_call=compare_version(&version,&version2);
     // println!("{}",ver_call);
-    let mut word_dic=vec!["apple","pen","apple","dog"];
-    let word=String::from("applepen");
-    // word_dic.push("apple");
-    // word_dic.push("pen");
-    // word_dic.push("apple");
-    if word_break(&word,word_dic)
-    { println!("true") }
-    else { println!("false") }
-
+    // =======================word_dic code============
+    // let mut word_dic=vec!["apple","pen","apple","dog"];
+    // let word=String::from("applepen");
+    // // word_dic.push("apple");
+    // // word_dic.push("pen");
+    // // word_dic.push("apple");
+    // if word_break(&word,word_dic)
+    // { println!("true") }
+    // else { println!("false") }
+    //==============Reverse a string like hello word======>word hello =======
+    let s=String::from("hello world");
+    let final_str=reverse_words(s);
+    println!("{:?}",final_str);
 
 }
 fn this_function(test_str:&String)->String
@@ -200,4 +204,19 @@ fn word_break(word:&String,word_dic:Vec<&str>)->bool
             return false }
     }
     true
+}
+fn reverse_words(s:String)->String{
+let reverse_string_list:Vec<&str>=s.split(" ").collect();
+let mut final_str=String::new();
+    for i in reverse_string_list.iter().rev()
+    {
+        // println!("{:?}",reverse_string_list[reverse_string_list-i]);
+        // println!("{:?}",i);
+        final_str.push_str(i);
+        final_str.push_str(" ")
+
+    }
+
+    // println!("{:?}",reverse_string_list);s
+    final_str
 }
