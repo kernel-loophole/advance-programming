@@ -1,4 +1,6 @@
 extern crate regex;
+
+use std::env::var;
 use console::style;
 
 
@@ -43,10 +45,15 @@ fn main() {
     // println!("{:?}",res);
     // println!("This is {} neat", style("quite").blue());
     // println!("This is {} neat", style("testing color").red());
-    let nums=vec![1,3,4,4,3,10];
-    let target=13;
-    let rs=two_sum(nums,target);
-    println!("{:?}",rs);
+    // let nums=vec![1,3,4,4,3,10];
+    // let target=13;
+    // let rs=two_sum(nums,target);
+    // println!("{:?}",rs);
+    // let version1="1.20";
+    let version=String::from("1.30");
+    let version2=String::from("1.30");
+    let ver_call=compare_version(&version,&version2);
+    println!("{}",ver_call);
 }
 fn this_function(test_str:&String)->String
 {
@@ -160,4 +167,16 @@ let mut index_array=Vec::new();
         }
     }
     index_array
+}
+fn compare_version(version1:&String,version2:&String)->i32
+{
+    let mut version_after_split:Vec<&str>=version1.split('.').collect();
+    let mut version2_after_split:Vec<&str>=version2.split('.').collect();
+    // println!("{:?}",version2_after_split);
+    // println!("{:?}",version_after_split);
+    if version_after_split[1]<version2_after_split[1]
+    {
+        return -1;
+    }
+    1
 }
