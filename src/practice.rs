@@ -1,72 +1,112 @@
 extern crate regex;
+use std::thread;
+use std::sync::mpsc;
 
 use std::env::var;
 use console::style;
 
 
 use regex::Regex;
+// fn main() {
+//     // let vec1=vec![1,13,5,6,6];
+//     // let iter_test:Vec<_>=vec1.iter().map(|x| x+2).collect();
+//     // println!("{:?}",iter_test);
+//     // let mut str_test=String::from("test str");
+//     // let str_test_one:&str="test str";
+//     // println!("{:?}",str_test);
+//     // println!("{:?}",str_test_one);
+//     // let mut mut_x=&str_test;
+//     // println!("{:?}",mut_x);
+//     // println!("{:?}",str_test);
+//     // let mut test_final_str=String::from("helo str");
+//     // let mut final_str=this_function(&test_final_str);
+//     // final_str.retain(|c| c!='h');
+//     // println!("{:?}",final_str);
+//     // println!("{:?}",test_final_str);
+//   //   let test_str:String=String::from("[{}()]({}{})");
+//   // if   valid_par(&test_str){
+//   //     println!("true")
+//   // }
+//   //   else {
+//   //       println!("flase");
+//   //   }
+//
+//     // let palin=String::from("A man, a plan, a canal: Panama");
+//     // if palindrome(&palin)
+//     // {
+//     //     println!("true")
+//     // }
+//     // else {
+//     //     println!("flase");
+//     // }
+//
+//     // ==================haystack problem=============
+//     // let haytsack=String::from("sadsoiamsad");
+//     // let needle=String::from("sad");
+//     // let res=str_str(&haytsack,&needle);
+//     // println!("{:?}",res);
+//     // println!("This is {} neat", style("quite").blue());
+//     // println!("This is {} neat", style("testing color").red());
+//     // let nums=vec![1,3,4,4,3,10];
+//     // let target=13;
+//     // let rs=two_sum(nums,target);
+//     // println!("{:?}",rs);
+//     // let version1="1.20";
+//     // let version=String::from("1.30");
+//     // let version2=String::from("1.30");
+//     // let ver_call=compare_version(&version,&version2);
+//     // println!("{}",ver_call);
+//     // =======================word_dic code============
+//     // let mut word_dic=vec!["apple","pen","apple","dog"];
+//     // let word=String::from("applepen");
+//     // // word_dic.push("apple");
+//     // // word_dic.push("pen");
+//     // // word_dic.push("apple");
+//     // if word_break(&word,word_dic)
+//     // { println!("true") }
+//     // else { println!("false") }
+//     //==============Reverse a string like hello word======>word hello =======
+//     // let s=String::from("hello world");
+//     // let final_str=reverse_words(s);
+//     // println!("{:?}",final_str);
+//     let array:Vec<i32>=vec![1,23,34,4];
+//     permute(array);
+//
+//
+// }
+//thread main function
 fn main() {
-    // let vec1=vec![1,13,5,6,6];
-    // let iter_test:Vec<_>=vec1.iter().map(|x| x+2).collect();
-    // println!("{:?}",iter_test);
-    // let mut str_test=String::from("test str");
-    // let str_test_one:&str="test str";
-    // println!("{:?}",str_test);
-    // println!("{:?}",str_test_one);
-    // let mut mut_x=&str_test;
-    // println!("{:?}",mut_x);
-    // println!("{:?}",str_test);
-    // let mut test_final_str=String::from("helo str");
-    // let mut final_str=this_function(&test_final_str);
-    // final_str.retain(|c| c!='h');
-    // println!("{:?}",final_str);
-    // println!("{:?}",test_final_str);
-  //   let test_str:String=String::from("[{}()]({}{})");
-  // if   valid_par(&test_str){
-  //     println!("true")
-  // }
-  //   else {
-  //       println!("flase");
-  //   }
-
-    // let palin=String::from("A man, a plan, a canal: Panama");
-    // if palindrome(&palin)
-    // {
-    //     println!("true")
-    // }
-    // else {
-    //     println!("flase");
+   //=======simple thread while end when main thread end
+    // thread::spawn(|| {
+    //     for i in 1..10 {
+    //         println!("hi number {} from the spawned thread!",
+    //                  i);
+    //     }
+    // });
+    // for i in 1..5 {
+    //     println!("hi number {} from the main thread!",
+    //              i);
     // }
 
-    // ==================haystack problem=============
-    // let haytsack=String::from("sadsoiamsad");
-    // let needle=String::from("sad");
-    // let res=str_str(&haytsack,&needle);
-    // println!("{:?}",res);
-    // println!("This is {} neat", style("quite").blue());
-    // println!("This is {} neat", style("testing color").red());
-    // let nums=vec![1,3,4,4,3,10];
-    // let target=13;
-    // let rs=two_sum(nums,target);
-    // println!("{:?}",rs);
-    // let version1="1.20";
-    // let version=String::from("1.30");
-    // let version2=String::from("1.30");
-    // let ver_call=compare_version(&version,&version2);
-    // println!("{}",ver_call);
-    // =======================word_dic code============
-    // let mut word_dic=vec!["apple","pen","apple","dog"];
-    // let word=String::from("applepen");
-    // // word_dic.push("apple");
-    // // word_dic.push("pen");
-    // // word_dic.push("apple");
-    // if word_break(&word,word_dic)
-    // { println!("true") }
-    // else { println!("false") }
-    //==============Reverse a string like hello word======>word hello =======
-    let s=String::from("hello world");
-    let final_str=reverse_words(s);
-    println!("{:?}",final_str);
+   //==============Second thread example which end when span ends ================
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {} from the spawned thread!",
+                     i);
+        }
+    });
+    for i in 1..5 {
+        println!("hi number {} from the main thread!",
+                 i);
+    }
+    let v=vec![1,2,3,4,4];
+    //Force colsure o take  the onwership of v as reference
+    let test_thread=thread::spawn(move || {
+        println!("{:?}",v);
+    });
+    handle.join();
+    test_thread.join();
+
 
 }
 fn this_function(test_str:&String)->String
@@ -206,8 +246,8 @@ fn word_break(word:&String,word_dic:Vec<&str>)->bool
     true
 }
 fn reverse_words(s:String)->String{
-let reverse_string_list:Vec<&str>=s.split(" ").collect();
-let mut final_str=String::new();
+    let reverse_string_list:Vec<&str>=s.split(" ").collect();
+    let mut final_str=String::new();
     for i in reverse_string_list.iter().rev()
     {
         // println!("{:?}",reverse_string_list[reverse_string_list-i]);
@@ -220,3 +260,30 @@ let mut final_str=String::new();
     // println!("{:?}",reverse_string_list);s
     final_str
 }
+// fn is_scramble(s1:String,s2:String)->bool
+// {
+//     if s1.len()<1
+//     {
+//         return false
+//     }
+//     for i in 0..s1.len(){
+//
+//     }
+//
+//
+//     true
+// }
+fn permute(array:Vec<i32>)->Vec<i32>
+{
+    for i in 0..array.len()
+    {
+        // let tmp_vec=Vec::new();
+        for j in i..array.len()
+        {
+            println!("{:?}",j);
+        }
+
+    }
+array
+}
+//threads
