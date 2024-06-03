@@ -1,7 +1,7 @@
 extern crate regex;
 use std::thread;
 use std::sync::mpsc;
-
+use std::time::Duration;
 use std::env::var;
 use console::style;
 
@@ -104,9 +104,35 @@ fn main() {
     let test_thread=thread::spawn(move || {
         println!("{:?}",v);
     });
+
     handle.join();
     test_thread.join();
-
+    //message passing in thread using producer and consumer
+    //mpsc multiple producer ,single consumer
+    let (tx, rx) = mpsc::channel();
+    thread::spawn(move || {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+    });
+    //rec thread val
+    let received = rx.recv().unwrap();
+    println!("Got: {}", received);
+    let (tx, rx) = mpsc::channel();
+    thread::spawn(move || {
+        let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
+        ];
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(2));
+        }
+    });
+    for received in rx {
+        println!("Got: {}", received);
+    }
 
 }
 fn this_function(test_str:&String)->String
