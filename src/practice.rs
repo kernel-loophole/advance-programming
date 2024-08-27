@@ -303,3 +303,43 @@ fn group_anagram(array: &Vec<String>) ->&Vec<String>
     println!("{:?}",result_vec);
  array
 }
+fn generate_parentheses(n: i32) -> Vec<String> {
+    fn backtrack(result: &mut Vec<String>, current: String, open_count: i32, close_count: i32, max: i32) {
+        if current.len() as i32 == max * 2 {
+            result.push(current);
+            return;
+        }
+
+        if open_count < max {
+            backtrack(result, current.clone() + "(", open_count + 1, close_count, max);
+        }
+
+        if close_count < open_count {
+            backtrack(result, current.clone() + ")", open_count, close_count + 1, max);
+        }
+    }
+
+    let mut result = Vec::new();
+    backtrack(&mut result, String::new(), 0, 0, n);
+    result
+}
+fn generate_parentheses(n: i32) -> Vec<String> {
+    fn backtrack(result: &mut Vec<String>, current: String, open_count: i32, close_count: i32, max: i32) {
+        if current.len() as i32 == max * 2 {
+            result.push(current);
+            return;
+        }
+
+        if open_count < max {
+            backtrack(result, current.clone() + "(", open_count + 1, close_count, max);
+        }
+
+        if close_count < open_count {
+            backtrack(result, current.clone() + ")", open_count, close_count + 1, max);
+        }
+    }
+
+    let mut result = Vec::new();
+    backtrack(&mut result, String::new(), 0, 0, n);
+    result
+}
